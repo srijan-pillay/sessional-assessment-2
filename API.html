@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Person Studio</title>
 
     <style>
 
       #form1{
         margin-left: 30px;
+        margin-right: 30px;
         margin-top: 30px;
       }
 
@@ -47,21 +48,25 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="color: white;">Link</a>
+              <a class="nav-link" href="#" style="color: white;">All Data</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" style="color: white;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Get Data
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Names</a>
+                <a class="dropdown-item" href="#">Emails</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Addresses</a>
+                <a class="dropdown-item" href="#">Phone Numbers</a>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" style="color: white;">Disabled</a>
+              <a class="nav-link disabled" href="#" style="color: white;">Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" style="color: white;">Contact</a>
             </li>
           </ul>
           <!-- <form class="form-inline my-2 my-lg-0">
@@ -84,7 +89,7 @@
           <div class="card main2">
             <div class="card-body">
               <h1 class="card-title">Person Management </h1>
-              <p class="card-text">Best in the Game.</p>
+              <p class="card-text">Person management refers to the practice of recruiting, training, engaging and retaining employees to optimize their talent and maximize their productivity. </p>
               <a href="#" class="btn btn-primary">Know More</a>
             </div>
           </div>
@@ -125,25 +130,72 @@
           <h1>To get the names of all the clients</h1>
           
           <p class="card-text"> </p>
-          <button type="button" class="btn btn-primary" onclick="name()">Click Here</button>
+          <button type="button" class="btn btn-primary" onclick="def()">Click Here</button>
 
         
         </div>
       </div>
       </center>
 
-      <p id="div2">
-
-      </p>
-  
-  
-      <div id=" grandparent">
-      <div id="parent1">
-  
-      </div>
-      </div>
-
       
+  
+  
+      <div id="name"> 
+  
+      </div>
+
+
+      <center><div class="card" style="width: 1200px; margin-top: 100px;">
+        
+        <div class="card-body">
+          <h1>To get the emails of all the clients</h1>
+          
+          <p class="card-text"> </p>
+          <button type="button" class="btn btn-primary" onclick="ghi()">Click Here</button>
+
+        
+        </div>
+      </div>
+      </center>
+
+      <div id="email">
+  
+      </div>
+
+      <center><div class="card" style="width: 1200px; margin-top: 100px;">
+        
+        <div class="card-body">
+          <h1>To get the address of all the clients</h1>
+          
+          <p class="card-text"> </p>
+          <button type="button" class="btn btn-primary" onclick="jkl()">Click Here</button>
+
+        
+        </div>
+      </div>
+      </center>
+
+
+      <div id="address">
+  
+      </div>
+
+      <center><div class="card" style="width: 1200px; margin-top: 100px;">
+        
+        <div class="card-body">
+          <h1>To get the phone number of all the clients</h1>
+          
+          <p class="card-text"> </p>
+          <button type="button" class="btn btn-primary" onclick="mno()">Click Here</button>
+
+        
+        </div>
+      </div>
+      </center>
+      
+      <div id="phone">
+  
+      </div>
 
       
 
@@ -278,7 +330,7 @@
         }
 
 
-        function name() {
+        function def() {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
                 if(this.readyState==4 && this.status==200){
@@ -286,11 +338,88 @@
                     var content = this.responseText;
                     var data = this.responseText;  
                     var dataobj = JSON.parse(data);   // we are accessing the data by converting it to JSON object
-                    var parent = document.getElementById("parent1");
+                    var parent = document.getElementById("name");
                     for(var i=0;i<dataobj.length;i++)
                     {
                         var node = document.createElement('p');
-                        node.innerHTML = dataobj[i].name;
+                        node.innerHTML ="<center>"+dataobj[i].id + ". "+ dataobj[i].name+"</center>";
+                        parent.appendChild(node);
+                    }
+                    
+
+                }
+            }
+            xhr.open("GET","https://jsonplaceholder.typicode.com/users?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-09");
+            xhr.send();
+        }
+
+
+
+
+ // for email
+
+        function ghi() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(this.readyState==4 && this.status==200){
+                    console.log(this.responseText);  // this is the data we have to access
+                    var content = this.responseText;
+                    var data = this.responseText;  
+                    var dataobj = JSON.parse(data);   // we are accessing the data by converting it to JSON object
+                    var parent = document.getElementById("email");
+                    for(var i=0;i<dataobj.length;i++)
+                    {
+                        var node = document.createElement('p');
+                        node.innerHTML ="<center>"+dataobj[i].id + ". "+ dataobj[i].email+"</center>";
+                        parent.appendChild(node);
+                    }
+                    
+
+                }
+            }
+            xhr.open("GET","https://jsonplaceholder.typicode.com/users?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-09");
+            xhr.send();
+        }
+
+
+        function jkl() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(this.readyState==4 && this.status==200){
+                    console.log(this.responseText);  // this is the data we have to access
+                    var content = this.responseText;
+                    var data = this.responseText;  
+                    var dataobj = JSON.parse(data);   // we are accessing the data by converting it to JSON object
+                    var parent = document.getElementById("address");
+                    for(var i=0;i<dataobj.length;i++)
+                    {
+                        var node = document.createElement('p');
+                        node.innerHTML ="<center>"+dataobj[i].id + ". "+ dataobj[i].address.city+"</center>";
+                        parent.appendChild(node);
+                    }
+                    
+
+                }
+            }
+            xhr.open("GET","https://jsonplaceholder.typicode.com/users?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-09");
+            xhr.send();
+        }
+
+
+
+        function mno() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(this.readyState==4 && this.status==200){
+                    console.log(this.responseText);  // this is the data we have to access
+                    var content = this.responseText;
+                    var data = this.responseText;  
+                    var dataobj = JSON.parse(data);   // we are accessing the data by converting it to JSON object
+                    var parent = document.getElementById("phone");
+                    for(var i=0;i<dataobj.length;i++)
+                    {
+                        var node = document.createElement('p');
+                        node.innerHTML ="<center>"+dataobj[i].id + ". "+ dataobj[i].phone+"</center>";
                         parent.appendChild(node);
                     }
                     
