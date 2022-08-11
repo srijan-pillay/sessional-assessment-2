@@ -30,7 +30,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"><img src="logo1.png" height="80px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,10 +41,10 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#" style="color: white;">Link</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" style="color: white;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -55,7 +55,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link disabled" href="#" style="color: white;">Disabled</a>
             </li>
           </ul>
           <!-- <form class="form-inline my-2 my-lg-0">
@@ -66,7 +66,7 @@
       </nav>
 
 
-      <div class="row" style="height: 80vh ; border: 0px;">
+      <div class="row" style="height: 80vh ; border: 0px; margin-top: 100px;">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -90,16 +90,17 @@
       <center><div class="card" style="width: 1200px; margin-top: 100px;">
         
         <div class="card-body">
-          <h1>Get Data</h1>
+          <h1>To get data of all the clients</h1>
           
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button type="button" class="btn btn-primary" onclick="abc()">Primary</button>
-          <button type="button" class="btn btn-dark">Dark</button>
+          <p class="card-text"> </p>
+          <button type="button" class="btn btn-primary" onclick="abc()">Click Here</button>
 
         
         </div>
       </div>
       </center>
+
+      
 
       <p id="div1">
 
@@ -111,6 +112,34 @@
   
       </div>
       </div>
+
+      <center><div class="card" style="width: 1200px; margin-top: 100px;">
+        
+        <div class="card-body">
+          <h1>To get the names of all the clients</h1>
+          
+          <p class="card-text"> </p>
+          <button type="button" class="btn btn-primary" onclick="name()">Click Here</button>
+
+        
+        </div>
+      </div>
+      </center>
+
+      <p id="div2">
+
+      </p>
+  
+  
+      <div id=" grandparent">
+      <div id="parent1">
+  
+      </div>
+      </div>
+
+      
+
+      
 
 
 
@@ -155,18 +184,47 @@
                         var nodephone = document.createElement('p'); // for phone
                         var nodeemail = document.createElement('p'); // for email
                         var nodewebsite = document.createElement('p'); // for website
+                        var nodeaddress = document.createElement('p'); // for address
+
 
                         nodename.innerHTML ="&nbsp&nbsp" +  dataobj[i].id + ". Name: " + dataobj[i].name;
                         nodephone.innerHTML ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Phone Number: " + dataobj[i].phone;
                         nodeemail.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Email: " + dataobj[i].email;
                         nodewebsite.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Website: " + dataobj[i].website;
+                        nodeaddress.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Address: " + dataobj[i].address.city;
+
 
 
                         parent.appendChild(nodename);
                         parent.appendChild(nodephone); 
                         parent.appendChild(nodeemail);
                         parent.appendChild(nodewebsite);
+                        parent.appendChild(nodeaddress);
 
+                    }
+                    
+
+                }
+            }
+            xhr.open("GET","https://jsonplaceholder.typicode.com/users?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-09");
+            xhr.send();
+        }
+
+
+        function name() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(this.readyState==4 && this.status==200){
+                    console.log(this.responseText);  // this is the data we have to access
+                    var content = this.responseText;
+                    var data = this.responseText;  
+                    var dataobj = JSON.parse(data);   // we are accessing the data by converting it to JSON object
+                    var parent = document.getElementById("parent1");
+                    for(var i=0;i<dataobj.length;i++)
+                    {
+                        var node = document.createElement('p');
+                        node.innerHTML = dataobj[i].name;
+                        parent.appendChild(node);
                     }
                     
 
