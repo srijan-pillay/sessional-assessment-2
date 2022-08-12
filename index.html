@@ -301,24 +301,29 @@
                     {
                         var nodename = document.createElement('h1'); //for name
                         var nodephone = document.createElement('p'); // for phone
-                        var nodeemail = document.createElement('p'); // for email
-                        var nodewebsite = document.createElement('p'); // for website
-                        var nodeaddress = document.createElement('p'); // for address
+                        // var nodeemail = document.createElement('p'); // for email
+                        // var nodewebsite = document.createElement('p'); // for website
+                        // var nodeaddress = document.createElement('p'); // for address
+
+
 
 
                         nodename.innerHTML ="&nbsp&nbsp" +  dataobj[i].id + ". Name: " + dataobj[i].name;
-                        nodephone.innerHTML ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Phone Number: " + dataobj[i].phone;
-                        nodeemail.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Email: " + dataobj[i].email;
-                        nodewebsite.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Website: " + dataobj[i].website;
-                        nodeaddress.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Address: " + dataobj[i].address.city;
+                       
+                        nodephone.innerHTML = "<div>" + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Phone Number: " + dataobj[i].phone + "<br>"+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Email: " + dataobj[i].email + "<br>"+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Website: " + dataobj[i].website+ "<br>"+ "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp City: " + dataobj[i].address.city + "</div>";
+                       
+                        // nodephone.innerHTML ="&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Phone Number: " + dataobj[i].phone;
+                        // nodeemail.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Email: " + dataobj[i].email;
+                        // nodewebsite.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Website: " + dataobj[i].website;
+                        // nodeaddress.innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + "Address: " + dataobj[i].address.city;
 
 
 
                         parent.appendChild(nodename);
                         parent.appendChild(nodephone); 
-                        parent.appendChild(nodeemail);
-                        parent.appendChild(nodewebsite);
-                        parent.appendChild(nodeaddress);
+                        // parent.appendChild(nodeemail);
+                        // parent.appendChild(nodewebsite);
+                        // parent.appendChild(nodeaddress);
 
                     }
                     
